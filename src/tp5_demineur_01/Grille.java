@@ -108,5 +108,14 @@ public class Grille {
     
         
     }
+    public void IncrementerContact(int i, int j){
+        Cellules[i][j].Contact++;//La cellule visee a un contact en plus
+    }
+    public void AffecterNombreContact(){
+        for (int nbrBombe=NombreBombe;nbrBombe>0;nbrBombe++){
+            
+        }
+    }
+    
     
 }
