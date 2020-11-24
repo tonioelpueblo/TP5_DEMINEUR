@@ -64,7 +64,7 @@ public class Cellule {
         }
     }
     public boolean PresenceBombe(){
-        if(Bombe==null){//Renvoie vrai si presence de bombe
+        if(Bombe==false){//Renvoie vrai si presence de bombe
             return false;
         }else{
             return true;
@@ -94,6 +94,8 @@ public class Cellule {
                 return " ";
             }
         }
+        
+        
         
     }
 }

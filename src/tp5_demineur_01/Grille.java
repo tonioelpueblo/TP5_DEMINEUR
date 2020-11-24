@@ -76,20 +76,24 @@ public class Grille {
     }
 
     public void PlacerBombe() {
-        int NbreBombe = NombreBombe; //On change de variable pour eviter de la
+        
         //modifier
-        while (NbreBombe != 0) {
+        Random r = new Random();
+        for(int i=0;i<NombreBombe;i++){ 
+            
             while (true) {//il faut que la celulle n'ai pas de bombe
-                Random r = new Random();
+                
                 int ligne_Bombe = r.nextInt(ligne);//ligne colonne aleatoire
                 int colonne_Bombe = r.nextInt(colonne);
+                
                 if (Cellules[ligne_Bombe][colonne_Bombe].PresenceBombe() == false) {
+                    
                     Cellules[ligne_Bombe][colonne_Bombe].Bombe = true;
                     break;//si on a reussi on sort du while on incremente
                     //le nombre de bombe et on continue
                 }
             }
-            NbreBombe = NbreBombe - 1;
+            
         }
     }
 
@@ -143,14 +147,20 @@ public class Grille {
     }
 
     public boolean EtreGagnante() {
-        //La grille est gagnante si le nombre de bombe affichee vaut zero, donc
-        //que le joueur a decouvert toutes les bombes
-        if(NombreBombeAffiche==0){
-            return true;
+        //La grille est gagnante si les cases non decouverte sont les cases de
+        //bombes : 
+        for (int i=0;i<ligne;i++){
+            for(int j=0;j<colonne;j++){
+                if(Cellules[i][j].Visible==true){
+                    if(Cellules[i][j].Bombe==false){
+                        return false;
+                    }
+                }
+            }
         }
-        else{
-            return false;
-        }
+        return true;//si apres avoir tout regarde je n'ai pas trouve de cellules
+        //visible sans bombe la grille est gagnante ... 
+        
     }
     public void AfficherGrille(){
         String LaLigne="";
