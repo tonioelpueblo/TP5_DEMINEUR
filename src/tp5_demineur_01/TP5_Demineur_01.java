@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * TP_DEMINEUR
+ * COURBI_BONNEAU
+ * Mini projet, realisation d'un demineur fonctionnel
  */
 package tp5_demineur_01;
 
