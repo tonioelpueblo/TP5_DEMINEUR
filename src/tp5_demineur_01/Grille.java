@@ -16,12 +16,13 @@ public class Grille {
 
     //constructeur d'une grille qui donne les dimensions a la grille de cellules
     //en fonction de deux entiers d'entrée, qu'on utilisera dans le menu
-    //en fonction du niveau choisit il y a plus ou moins de cellules... 
+    //en fonction du niveau choisit il y a plus ou moins de cellules...
     Cellule[][] Cellules;
     int ligne;
     int colonne;
     int Niveau;
     int NombreBombe;
+    int NombreBombeAffiche;
 
     public Grille(int i, int j) {
         ligne = i;//ce constructeur permet de garder dans les variables ligne et
@@ -58,7 +59,7 @@ public class Grille {
     }
 
     public void NombreTotBombe() {
-        switch (Niveau) {//en fonction du niveau j'ai un nombre de bombe : 
+        switch (Niveau) {//en fonction du niveau j'ai un nombre de bombe :
             case 1:
                 NombreBombe = 10;
                 break;
@@ -71,6 +72,7 @@ public class Grille {
             default:
                 break;
         }
+        NombreBombeAffiche = NombreBombe;
     }
 
     public void PlacerBombe() {
@@ -93,10 +95,10 @@ public class Grille {
 
     public boolean RendreVisible(int i, int j) {
         //on va rendre la cellule visibles a moins qu'une bombe s'y cache au
-        //quel cas la partie est perdue ... 
+        //quel cas la partie est perdue ...
         //On rend visible la cellule et on envoie vrai si tout va bien et faux
         //si on avait une bombe ... On renvoit pas juste faux sans rendre
-        //visible pour pouvoir tout afficher a la fin ... 
+        //visible pour pouvoir tout afficher a la fin ...
 
         if (Cellules[i][j].PresenceBombe() == true) {
             Cellules[i][j].RendreVisible();
@@ -112,7 +114,7 @@ public class Grille {
         Cellules[i][j].Contact++;//La cellule visee a un contact en plus
     }
 
-    public void Autourbombe(int ligneBombe, int colonneBombe) {//incremente aux 
+    public void Autourbombe(int ligneBombe, int colonneBombe) {//incremente aux
         //alentours d'une
         //cellule
         for (int k = -1; k < 2; k++) {//k va de -1 a 1 en passant par 0 :
@@ -130,12 +132,34 @@ public class Grille {
     public void AffecterNombreContact() {//cette methode va parcourir les bombes
         //des qu'elle a une bombe elle regarde ses voisins distants de 1
         //et incremente leur nombre de contact de 1
-        //a moins que ce voisin ne soit une bombe ... 
-for (int i=0;i<ligne;i++){
-        for (int j=0;j<colonne;j++){
-            if(Cellules[i][j].PresenceBombe()==true){
-                Autourbombe(i,j);
+        //a moins que ce voisin ne soit une bombe ...
+        for (int i = 0; i < ligne; i++) {
+            for (int j = 0; j < colonne; j++) {
+                if (Cellules[i][j].PresenceBombe() == true) {
+                    Autourbombe(i, j);
+                }
             }
         }
     }
+
+    public boolean EtreGagnante() {
+        //La grille est gagnante si le nombre de bombe affichee vaut zero, donc
+        //que le joueur a decouvert toutes les bombes
+        if(NombreBombeAffiche==0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
+    public void AfficherGrille(){
+        String LaLigne="";
+        for(int j=0;j<colonne;j++){
+            for(int i=0;i<ligne;i++){
+                LaLigne+="["+Cellules[i][j].LireNombreContact()+"]";
+            }
+            System.out.println(LaLigne);
+            LaLigne="";
+        }
+    }
+}
