@@ -111,7 +111,6 @@ public class Grille {
     public void IncrementerContact(int i, int j) {//ajoute un contact
         Cellules[i][j].Contact++;//La cellule visee a un contact en plus
     }
-
     public void Autourbombe(int ligneBombe, int colonneBombe) {//incremente aux 
         //alentours d'une
         //cellule
@@ -126,8 +125,7 @@ public class Grille {
             }
         }
     }
-
-    public void AffecterNombreContact() {//cette methode va parcourir les bombes
+     public void AffecterNombreContact() {//cette methode va parcourir les bombes
         //des qu'elle a une bombe elle regarde ses voisins distants de 1
         //et incremente leur nombre de contact de 1
         //a moins que ce voisin ne soit une bombe ... 
@@ -137,10 +135,12 @@ public class Grille {
                 if (Cellules[i][j].PresenceBombe() == true) {//on parcourt notre
                     //grille, si on a une bombe a un endroit on fait : 
                     Autourbombe(i, j);
-
-
+                }
             }
         }
+    }
 
-    }
-    }
+
+    
+   
+                    
