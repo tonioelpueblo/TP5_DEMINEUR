@@ -81,7 +81,19 @@ public class Cellule {
     public void AffecterNombreContact(int NbreContact){
         Contact=NbreContact;//Mon nombre de contact de la cellule change
     }
-    public int LireNombreContact(){
-        return Contact;//renvoie le nombre de contact
+    public String LireNombreContact(){
+        //si la cellules est visible on renvoie le nombre de contact,
+        //si elle est invisibles on renvoie le drapeau :
+        if(Visible==true){
+            return String.valueOf(Contact);//renvoie le nombre de contact
+        }
+        else{
+            if(DrapeauCell!=null){
+            return DrapeauCell.LireCouleur();
+        }else{
+                return " ";
+            }
+        }
+        
     }
 }
