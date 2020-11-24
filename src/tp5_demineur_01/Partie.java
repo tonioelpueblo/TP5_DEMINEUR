@@ -11,5 +11,6 @@ package tp5_demineur_01;
  * @author antoi
  */
 public class Partie {
+    Joueur LeJoueur;
     
 }

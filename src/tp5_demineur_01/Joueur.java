@@ -11,5 +11,13 @@ package tp5_demineur_01;
  * @author antoi
  */
 public class Joueur {
+    String Nom;
     
+    
+  public Joueur(String nom){
+      //Constructeur du joueur :
+      Nom=nom;
+  } 
+    
+   
 }
