@@ -76,24 +76,24 @@ public class Grille {
     }
 
     public void PlacerBombe() {
-        
+
         //modifier
         Random r = new Random();
-        for(int i=0;i<NombreBombe;i++){ 
-            
+        for (int i = 0; i < NombreBombe; i++) {
+
             while (true) {//il faut que la celulle n'ai pas de bombe
-                
+
                 int ligne_Bombe = r.nextInt(ligne);//ligne colonne aleatoire
                 int colonne_Bombe = r.nextInt(colonne);
-                
+
                 if (Cellules[ligne_Bombe][colonne_Bombe].PresenceBombe() == false) {
-                    
+
                     Cellules[ligne_Bombe][colonne_Bombe].Bombe = true;
                     break;//si on a reussi on sort du while on incremente
                     //le nombre de bombe et on continue
                 }
             }
-            
+
         }
     }
 
@@ -104,16 +104,33 @@ public class Grille {
         //si on avait une bombe ... On renvoit pas juste faux sans rendre
         //visible pour pouvoir tout afficher a la fin ...
 
-        if (Cellules[i][j].PresenceBombe() == true) {
-            Cellules[i][j].RendreVisible();
-            return false;
-        } else {
+        if (Cellules[i][j].RendreVisible() == true) {
+            if (Cellules[i][j].PresenceBombe() == true) {
+                return false;
+            }
+            if (Cellules[i][j].Contact == 0) {
+                EtendreSansContact(i, j);
+                return true;
+            }
+        } else {//la cellule était visible ou il y a un bug ... 
             Cellules[i][j].RendreVisible();
             return true;
         }
-
+        return true;
     }
-
+public void EtendreSansContact(int i,int j){
+    //Il nous faut une methode propre au demineur qui etend la zone ou il n'y a
+    //pas de contact, par exemple si l'utilisateur choisit une case ou il n'y a
+    //pas de contact la carte va rendrevisible toutes les cases sans contact 
+    //qui y sont directement liees et les cases avec contact qui forment la
+    //peripherie de cette zone ... 
+    int a=i;
+    int b=j;
+    while(Cellules[a][b].Contact==0){
+        Cellules[a][b].RendreVisible();
+        a++;
+    }
+}
     public void IncrementerContact(int i, int j) {//ajoute un contact
         Cellules[i][j].Contact++;//La cellule visee a un contact en plus
     }
@@ -149,10 +166,10 @@ public class Grille {
     public boolean EtreGagnante() {
         //La grille est gagnante si les cases non decouverte sont les cases de
         //bombes : 
-        for (int i=0;i<ligne;i++){
-            for(int j=0;j<colonne;j++){
-                if(Cellules[i][j].Visible==true){
-                    if(Cellules[i][j].Bombe==false){
+        for (int i = 0; i < ligne; i++) {
+            for (int j = 0; j < colonne; j++) {
+                if (Cellules[i][j].Visible == true) {
+                    if (Cellules[i][j].Bombe == false) {
                         return false;
                     }
                 }
@@ -160,16 +177,17 @@ public class Grille {
         }
         return true;//si apres avoir tout regarde je n'ai pas trouve de cellules
         //visible sans bombe la grille est gagnante ... 
-        
+
     }
-    public void AfficherGrille(){
-        String LaLigne="";
-        for(int j=0;j<colonne;j++){
-            for(int i=0;i<ligne;i++){
-                LaLigne+="["+Cellules[i][j].LireNombreContact()+"]";
+
+    public void AfficherGrille() {
+        String LaLigne = "";
+        for (int j = 0; j < colonne; j++) {
+            for (int i = 0; i < ligne; i++) {
+                LaLigne += "[" + Cellules[i][j].LireNombreContact() + "]";
             }
             System.out.println(LaLigne);
-            LaLigne="";
+            LaLigne = "";
         }
     }
 }

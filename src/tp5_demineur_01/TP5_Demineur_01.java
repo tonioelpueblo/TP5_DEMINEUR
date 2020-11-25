@@ -15,19 +15,9 @@ public class TP5_Demineur_01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Grille UneGrille;
-         UneGrille=new Grille(10,10);
-         UneGrille.Niveau=1;
-         UneGrille.NombreTotBombe();
-         UneGrille.PlacerBombe();
-         UneGrille.AffecterNombreContact();
-         System.out.println(" ");
-         UneGrille.AfficherGrille();
-         
-         
-         UneGrille.RendreVisible(0,1);
-         System.out.println(" ");
-         UneGrille.AfficherGrille();
+         Partie UnePartie=new Partie();
+         UnePartie.Init();
+         UnePartie.DebuterPartie();
     }
     
 }
