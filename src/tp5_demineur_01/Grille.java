@@ -133,7 +133,9 @@ public void EtendreSansContact(int i,int j){
     //1
     if(VerifPossible(a-1,b-1)==true){
         if(Cellules[a-1][b-1].Visible==false){
+            if(Cellules[a-1][b-1].LireNombreContact()==null){
             EtendreSansContact(a-1,b-1);
+            }
         }
     }
     
@@ -141,7 +143,9 @@ public void EtendreSansContact(int i,int j){
     //2
     if(VerifPossible(a-1,b)==true){
         if(Cellules[a-1][b].Visible==false){
+            if(Cellules[a-1][b].LireNombreContact()==null){
             EtendreSansContact(a-1,b);
+            }
         }
     }
     
@@ -149,7 +153,10 @@ public void EtendreSansContact(int i,int j){
     //3
     if(VerifPossible(a-1,b+1)==true){
         if(Cellules[a-1][b+1].Visible==false){
+            if(Cellules[a-1][b+1].LireNombreContact()==null){
+        
             EtendreSansContact(a-1,b+1);
+            }
         }
     }
     
@@ -158,7 +165,10 @@ public void EtendreSansContact(int i,int j){
     //4
     if(VerifPossible(a,b-1)==true){
         if(Cellules[a][b-1].Visible==false){
+            if(Cellules[a][b-1].LireNombreContact()==null){
             EtendreSansContact(a,b-1);
+            }
+            
         }
     }
     
@@ -166,7 +176,9 @@ public void EtendreSansContact(int i,int j){
     //5
     if(VerifPossible(a,b+1)==true){
         if(Cellules[a][b+1].Visible==false){
+            if(Cellules[a][b+1].LireNombreContact()==null){
             EtendreSansContact(a,b+1);
+            }
         }
     }
     
@@ -174,7 +186,9 @@ public void EtendreSansContact(int i,int j){
     //6
     if(VerifPossible(a+1,b-1)==true){
         if(Cellules[a+1][b-1].Visible==false){
+            if(Cellules[a+1][b-1].LireNombreContact()==null){
             EtendreSansContact(a+1,b-1);
+            }
         }
     }
     
@@ -182,7 +196,9 @@ public void EtendreSansContact(int i,int j){
     //7
     if(VerifPossible(a+1,b)==true){
         if(Cellules[a+1][b].Visible==false){
+            if(Cellules[a+1][b].LireNombreContact()==null){
             EtendreSansContact(a+1,b);
+            }
         }
     }
     
@@ -190,7 +206,9 @@ public void EtendreSansContact(int i,int j){
     //8
     if(VerifPossible(a+1,b+1)==true){
         if(Cellules[a+1][b+1].Visible==false){
+            if(Cellules[a+1][b+1].LireNombreContact()==null){
             EtendreSansContact(a+1,b+1);
+            }
         }
     }
     
