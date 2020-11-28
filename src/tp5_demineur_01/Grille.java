@@ -124,11 +124,82 @@ public void EtendreSansContact(int i,int j){
     //pas de contact la carte va rendrevisible toutes les cases sans contact 
     //qui y sont directement liees et les cases avec contact qui forment la
     //peripherie de cette zone ... 
+    
+    Cellules[i][j].Visible=true;
+    //Huit directions possibles : 
     int a=i;
     int b=j;
-    while(Cellules[a][b].Contact==0){
-        Cellules[a][b].RendreVisible();
-        a++;
+    
+    //1
+    if(VerifPossible(a-1,b-1)==true){
+        if(Cellules[a-1][b-1].Visible==false){
+            EtendreSansContact(a-1,b-1);
+        }
+    }
+    
+    
+    //2
+    if(VerifPossible(a-1,b)==true){
+        if(Cellules[a-1][b].Visible==false){
+            EtendreSansContact(a-1,b);
+        }
+    }
+    
+    
+    //3
+    if(VerifPossible(a-1,b+1)==true){
+        if(Cellules[a-1][b+1].Visible==false){
+            EtendreSansContact(a-1,b+1);
+        }
+    }
+    
+    
+    
+    //4
+    if(VerifPossible(a,b-1)==true){
+        if(Cellules[a][b-1].Visible==false){
+            EtendreSansContact(a,b-1);
+        }
+    }
+    
+    
+    //5
+    if(VerifPossible(a,b+1)==true){
+        if(Cellules[a][b+1].Visible==false){
+            EtendreSansContact(a,b+1);
+        }
+    }
+    
+    
+    //6
+    if(VerifPossible(a+1,b-1)==true){
+        if(Cellules[a+1][b-1].Visible==false){
+            EtendreSansContact(a+1,b-1);
+        }
+    }
+    
+    
+    //7
+    if(VerifPossible(a+1,b)==true){
+        if(Cellules[a+1][b].Visible==false){
+            EtendreSansContact(a+1,b);
+        }
+    }
+    
+    
+    //8
+    if(VerifPossible(a+1,b+1)==true){
+        if(Cellules[a+1][b+1].Visible==false){
+            EtendreSansContact(a+1,b+1);
+        }
+    }
+    
+}
+public boolean VerifPossible(int a, int b){
+    if((a<ligne+1)&&(a>=0)&&(b<colonne+1)&&(b>=0)){
+        return true;
+    }else{
+        return false;
     }
 }
     public void IncrementerContact(int i, int j) {//ajoute un contact
