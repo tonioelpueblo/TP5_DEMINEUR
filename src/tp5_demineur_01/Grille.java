@@ -133,8 +133,10 @@ public void EtendreSansContact(int i,int j){
     //1
     if(VerifPossible(a-1,b-1)==true){
         if(Cellules[a-1][b-1].Visible==false){
-            if(Cellules[a-1][b-1].LireNombreContact()==null){
+            if(Cellules[a-1][b-1].Contact==0){
             EtendreSansContact(a-1,b-1);
+            }else{
+                Cellules[a-1][b-1].RendreVisible();
             }
         }
     }
@@ -143,8 +145,10 @@ public void EtendreSansContact(int i,int j){
     //2
     if(VerifPossible(a-1,b)==true){
         if(Cellules[a-1][b].Visible==false){
-            if(Cellules[a-1][b].LireNombreContact()==null){
+            if(Cellules[a-1][b].Contact==0){
             EtendreSansContact(a-1,b);
+            }else{
+                Cellules[a-1][b].RendreVisible();
             }
         }
     }
@@ -153,9 +157,11 @@ public void EtendreSansContact(int i,int j){
     //3
     if(VerifPossible(a-1,b+1)==true){
         if(Cellules[a-1][b+1].Visible==false){
-            if(Cellules[a-1][b+1].LireNombreContact()==null){
+            if(Cellules[a-1][b+1].Contact==0){
         
             EtendreSansContact(a-1,b+1);
+            }else{
+                Cellules[a-1][b+1].RendreVisible();
             }
         }
     }
@@ -165,8 +171,10 @@ public void EtendreSansContact(int i,int j){
     //4
     if(VerifPossible(a,b-1)==true){
         if(Cellules[a][b-1].Visible==false){
-            if(Cellules[a][b-1].LireNombreContact()==null){
+            if(Cellules[a][b-1].Contact==0){
             EtendreSansContact(a,b-1);
+            }else{
+                Cellules[a][b-1].RendreVisible();
             }
             
         }
@@ -176,8 +184,10 @@ public void EtendreSansContact(int i,int j){
     //5
     if(VerifPossible(a,b+1)==true){
         if(Cellules[a][b+1].Visible==false){
-            if(Cellules[a][b+1].LireNombreContact()==null){
+            if(Cellules[a][b+1].Contact==0){
             EtendreSansContact(a,b+1);
+            }else{
+                Cellules[a][b+1].RendreVisible();
             }
         }
     }
@@ -186,8 +196,10 @@ public void EtendreSansContact(int i,int j){
     //6
     if(VerifPossible(a+1,b-1)==true){
         if(Cellules[a+1][b-1].Visible==false){
-            if(Cellules[a+1][b-1].LireNombreContact()==null){
+            if(Cellules[a+1][b-1].Contact==0){
             EtendreSansContact(a+1,b-1);
+            }else{
+                Cellules[a+1][b-1].RendreVisible();
             }
         }
     }
@@ -196,8 +208,10 @@ public void EtendreSansContact(int i,int j){
     //7
     if(VerifPossible(a+1,b)==true){
         if(Cellules[a+1][b].Visible==false){
-            if(Cellules[a+1][b].LireNombreContact()==null){
+            if(Cellules[a+1][b].Contact==0){
             EtendreSansContact(a+1,b);
+            }else{
+                Cellules[a+1][b].RendreVisible();
             }
         }
     }
@@ -206,15 +220,17 @@ public void EtendreSansContact(int i,int j){
     //8
     if(VerifPossible(a+1,b+1)==true){
         if(Cellules[a+1][b+1].Visible==false){
-            if(Cellules[a+1][b+1].LireNombreContact()==null){
+            if(Cellules[a+1][b+1].Contact==0){
             EtendreSansContact(a+1,b+1);
+            }else{
+                Cellules[a+1][b+1].RendreVisible();
             }
         }
     }
     
 }
 public boolean VerifPossible(int a, int b){
-    if((a<ligne+1)&&(a>=0)&&(b<colonne+1)&&(b>=0)){
+    if((a<ligne)&&(a>=0)&&(b<colonne)&&(b>=0)){
         return true;
     }else{
         return false;
