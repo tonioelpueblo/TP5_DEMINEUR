@@ -49,10 +49,16 @@ public class Cellule {
     }
     public boolean PlacerDrapeau(String coul){
         //on initialise le drapeau en passant par le constructeur : 
+        if(Visible==true){
+            return false;
+        }else{
         if(DrapeauCell==null){
             DrapeauCell=new Drapeau(coul);
             return true;
         }else return false;
+        }
+    }
+    public boolean EnlverDrapeau(){
         
     }
     public boolean PresenceDrapeau(){
