@@ -47,6 +47,11 @@ public class Cellule {
             return "null";//si pas de drapeau 
         }
     }
+    public void PlacerDrapeau(String coul){
+        //on initialise le drapeau en passant par le constructeur : 
+        
+        DrapeauCell=new Drapeau(coul);
+    }
     public boolean PresenceDrapeau(){
         if(DrapeauCell==null){//si je n'ai pas de drapeau je renvoie vrai
             return true;
@@ -91,7 +96,7 @@ public class Cellule {
             if(DrapeauCell!=null){
             return DrapeauCell.LireCouleur();
         }else{
-                return " ";
+                return " "; 
             }
         }
         

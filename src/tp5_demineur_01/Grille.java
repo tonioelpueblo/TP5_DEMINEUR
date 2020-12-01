@@ -57,6 +57,10 @@ public class Grille {
     public String LireCouleurDrapeau(int i, int j) {
         return Cellules[i][j].LireCouleurDrapeau();
     }
+    public void PlacerDrapeau(int i,int j,String coul){
+        //Place un drapeau dans la cellule :
+        Cellules[i][j].PlacerDrapeau(coul);
+    }
 
     public void NombreTotBombe() {
         switch (Niveau) {//en fonction du niveau j'ai un nombre de bombe :
@@ -273,7 +277,7 @@ public boolean VerifPossible(int a, int b){
         //bombes : 
         for (int i = 0; i < ligne; i++) {
             for (int j = 0; j < colonne; j++) {
-                if (Cellules[i][j].Visible == true) {
+                if (Cellules[i][j].Visible == false) {
                     if (Cellules[i][j].Bombe == false) {
                         return false;
                     }
@@ -287,8 +291,9 @@ public boolean VerifPossible(int a, int b){
 
     public void AfficherGrille() {
         String LaLigne = "";
+        for (int i = 0; i < ligne; i++) {
         for (int j = 0; j < colonne; j++) {
-            for (int i = 0; i < ligne; i++) {
+            
                 LaLigne += "[" + Cellules[i][j].LireNombreContact() + "]";
             }
             System.out.println(LaLigne);
