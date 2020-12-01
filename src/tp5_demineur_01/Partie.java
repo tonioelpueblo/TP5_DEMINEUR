@@ -26,6 +26,7 @@ public class Partie {
          UneGrille.AfficherGrille();
     }
     public void DebuterPartie(){
+        //Debute la partie
         Scanner saisieUtilisateur = new Scanner(System.in);
         while (true){
             System.out.println("Ligne");
