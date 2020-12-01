@@ -92,7 +92,7 @@ public class Partie {
             case 1:
                 //Poser un drapeau
             String coul="rien";    
-            while((coul!="r")||(coul!="b")){
+            while((coul!="r")&&(coul!="b")){
                 System.out.println("Quelle drapeau voulez-vous poser ? (r,b)");
                 coul = saisieUtilisateur.next();
             }    
