@@ -62,9 +62,7 @@ public class Partie {
         System.out.println(" ");
         UneGrille.AfficherGrille();
     }
-
-    public void DebuterPartie() {
-        //Debute la partie
+    public int Menu(){
         //Le joueur a le choix entre poser un drapeau (et choisir la couleur) et
         //creuser (rendre visible une case) en prenant le risque de tomber sur 
         //une bombe ... 
@@ -86,7 +84,12 @@ public class Partie {
                     break;
                 }
 
-            }
+            }return choix;
+    }
+    public void DebuterPartie() {
+        Scanner saisieUtilisateur = new Scanner(System.in);
+        //Debute la partie
+        int choix=Menu();
             switch (choix) {//en fonction du niveau on cree la grille et on
                 //initialise le niveau : 
 
@@ -100,7 +103,7 @@ public class Partie {
                     int ligneDrap = -1;
                     int colonneDrap = -1;
                     boolean ind = false;
-                    while (((ligneDrap <= 0) || (ligneDrap > UneGrille.ligne) || (colonneDrap <= 0) || (colonneDrap > UneGrille.colonne)) && (ind == false)) {
+                    while ((UneGrille.VerifPossible(ligneDrap,colonneDrap)==false) && (ind == false)) {
                         System.out.println("Ligne");
                         ligneDrap = saisieUtilisateur.nextInt();
                         System.out.println("Colonne");
@@ -116,20 +119,23 @@ public class Partie {
                     //Enlever un drapeau :
                     int ligneEnl = -1;
                     int colonneEnl = -1;
-
-                    while (((ligneEnl <= 0) || (ligneEnl > UneGrille.ligne) || (colonneEnl <= 0) || (colonneEnl > UneGrille.colonne))) {
-                        System.out.println("Ligne");
-                        ligneDrap = saisieUtilisateur.nextInt();
-                        System.out.println("Colonne");
-                        colonneDrap = saisieUtilisateur.nextInt();
-
-                        boolean IndEnl = UneGrille.Cellules[ligneEnl][colonneEnl].PresenceDrapeau();
-                        if (IndEnl == true) {
+boolean IndEnl=true;
+                    while ((UneGrille.VerifPossible(ligneEnl, colonneEnl)==false)||(IndEnl==true)) {
+                        
+if(UneGrille.VerifPossible(ligneEnl, colonneEnl)==true){
+    IndEnl = UneGrille.Cellules[ligneEnl][colonneEnl].PresenceDrapeau();
+    if (IndEnl == false) {
                             UneGrille.EnleverDrapeau(ligneEnl, colonneEnl);
                             System.out.println(" ");
                             UneGrille.AfficherGrille();
                             break;
-                        }
+}
+}                    
+                        System.out.println("Ligne");
+                        ligneDrap = saisieUtilisateur.nextInt();
+                        System.out.println("Colonne");
+                        colonneDrap = saisieUtilisateur.nextInt();
+                        
 
                     }
                     break;

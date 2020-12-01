@@ -61,8 +61,8 @@ public class Grille {
         //Place un drapeau dans la cellule :
         return Cellules[i][j].PlacerDrapeau(coul);
     }
-public boolean EnlverDrapeau(int i,int j){
-    return Cellules[i][j].EnleverDrapeau();
+public void EnleverDrapeau(int i,int j){
+    Cellules[i][j].EnleverDrapeau();
 }
     public void NombreTotBombe() {
         switch (Niveau) {//en fonction du niveau j'ai un nombre de bombe :

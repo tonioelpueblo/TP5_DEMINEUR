@@ -58,8 +58,8 @@ public class Cellule {
         }else return false;
         }
     }
-    public boolean EnlverDrapeau(){
-        
+    public void EnleverDrapeau(){
+        DrapeauCell=null;
     }
     public boolean PresenceDrapeau(){
         if(DrapeauCell==null){//si je n'ai pas de drapeau je renvoie vrai
