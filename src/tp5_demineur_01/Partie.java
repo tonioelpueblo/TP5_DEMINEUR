@@ -79,7 +79,7 @@ public class Partie {
 
         while (true) {
             choix = saisieUtilisateur.nextInt();
-            if ((choix != 1) && (choix != 2) && (choix != 3)&& (choix != 4)) {
+            if ((choix != 1) && (choix != 2) && (choix != 3) && (choix != 4)) {
 
             } else {
                 break;
@@ -135,16 +135,25 @@ public class Partie {
         }
     }
 
-    public void Creuser() {
+    public boolean Creuser() {
         Scanner saisieUtilisateur = new Scanner(System.in);
-        System.out.println("Ligne");
-        int ligne = saisieUtilisateur.nextInt();
-        System.out.println("Colonne");
-        int colonne = saisieUtilisateur.nextInt();
+        int ligne=-1;
+        int colonne=-1;
+        while (UneGrille.VerifPossible(ligne,colonne)==false) {
+            System.out.println("Ligne");
+            ligne = saisieUtilisateur.nextInt();
+            System.out.println("Colonne");
+            colonne = saisieUtilisateur.nextInt();
 
-        UneGrille.RendreVisible(ligne, colonne);
+            
+            
+        }
+        boolean retour=UneGrille.RendreVisible(ligne, colonne);
+        //renvoie faux si on avait une bombe
         System.out.println(" ");
         UneGrille.AfficherGrille();
+        return retour;
+
     }
 
     public void DebuterPartie() {
@@ -165,7 +174,15 @@ public class Partie {
                     break;
                 case 3:
                     //Creuser
-                    Creuser();
+                    //Attention si on creuse sur une bombe la partie est perdue
+                    // ... 
+                    
+                    if(Creuser()==false){
+                        //la partie est perdue
+                        System.out.println("Vous etes tombés sur une bombe ... ");
+                        indice = false;
+                        break;
+                    }
                     break;
                 case 4:
                     //quitter
@@ -173,6 +190,10 @@ public class Partie {
                     break;
                 default:
                     break;
+            }
+            if (UneGrille.EtreGagnante() == true) {
+                System.out.println("La partie est gagnee !! ");
+                indice = false;
             }
 
         }
