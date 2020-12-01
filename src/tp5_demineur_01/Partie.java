@@ -91,13 +91,23 @@ public class Partie {
 
             case 1:
                 //Poser un drapeau
-            System.out.println("Quelle drapeau voulez-vous poser ? (r,b)");
-            String couleur = saisieUtilisateur.next();
-            System.out.println("Ligne");
-            int ligneDrap = saisieUtilisateur.nextInt();
+            String coul="rien";    
+            while((coul!="r")||(coul!="b")){
+                System.out.println("Quelle drapeau voulez-vous poser ? (r,b)");
+                coul = saisieUtilisateur.next();
+            }    
+            int ligneDrap=-1;
+            int colonneDrap=-1;
+            boolean ind=false;
+            while(((ligneDrap<=0)||(ligneDrap>UneGrille.ligne)||(colonneDrap<=0)||(colonneDrap>UneGrille.colonne))&&(ind==false)){
+                System.out.println("Ligne");
+            ligneDrap = saisieUtilisateur.nextInt();
             System.out.println("Colonne");
-            int colonneDrap = saisieUtilisateur.nextInt();
-            UneGrille.PlacerDrapeau(ligneDrap,colonneDrap,couleur);
+            colonneDrap = saisieUtilisateur.nextInt();
+            ind=UneGrille.PlacerDrapeau(ligneDrap,colonneDrap,coul);
+            }
+            
+            
             
 
         

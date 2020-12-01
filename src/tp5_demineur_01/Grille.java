@@ -57,9 +57,9 @@ public class Grille {
     public String LireCouleurDrapeau(int i, int j) {
         return Cellules[i][j].LireCouleurDrapeau();
     }
-    public void PlacerDrapeau(int i,int j,String coul){
+    public boolean PlacerDrapeau(int i,int j,String coul){
         //Place un drapeau dans la cellule :
-        Cellules[i][j].PlacerDrapeau(coul);
+        return Cellules[i][j].PlacerDrapeau(coul);
     }
 
     public void NombreTotBombe() {
