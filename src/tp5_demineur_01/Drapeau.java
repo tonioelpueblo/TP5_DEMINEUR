@@ -11,13 +11,15 @@ package tp5_demineur_01;
  * @author antoi
  */
 public class Drapeau {
+
     String Couleur;
-    
-    public Drapeau(String couleur){
+
+    public Drapeau(String couleur) {
         //Constructeur du drapeau
-        Couleur=couleur;
+        Couleur = couleur;
     }
-    public String LireCouleur(){
+
+    public String LireCouleur() {
         return Couleur;
     }
 }

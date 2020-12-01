@@ -15,9 +15,9 @@ public class TP5_Demineur_01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Partie UnePartie=new Partie();
-         UnePartie.Init();
-         UnePartie.DebuterPartie();
+        Partie UnePartie = new Partie();
+        UnePartie.Init();
+        UnePartie.DebuterPartie();
     }
-    
+
 }

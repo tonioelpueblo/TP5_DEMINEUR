@@ -137,18 +137,16 @@ public class Partie {
 
     public boolean Creuser() {
         Scanner saisieUtilisateur = new Scanner(System.in);
-        int ligne=-1;
-        int colonne=-1;
-        while (UneGrille.VerifPossible(ligne,colonne)==false) {
+        int ligne = -1;
+        int colonne = -1;
+        while (UneGrille.VerifPossible(ligne, colonne) == false) {
             System.out.println("Ligne");
             ligne = saisieUtilisateur.nextInt();
             System.out.println("Colonne");
             colonne = saisieUtilisateur.nextInt();
 
-            
-            
         }
-        boolean retour=UneGrille.RendreVisible(ligne, colonne);
+        boolean retour = UneGrille.RendreVisible(ligne, colonne);
         //renvoie faux si on avait une bombe
         System.out.println(" ");
         UneGrille.AfficherGrille();
@@ -176,11 +174,12 @@ public class Partie {
                     //Creuser
                     //Attention si on creuse sur une bombe la partie est perdue
                     // ... 
-                    
-                    if(Creuser()==false){
+
+                    if (Creuser() == false) {
                         //la partie est perdue
                         System.out.println("Vous etes tombés sur une bombe ... ");
                         indice = false;
+                        AfficherFin();
                         break;
                     }
                     break;
@@ -194,8 +193,13 @@ public class Partie {
             if (UneGrille.EtreGagnante() == true) {
                 System.out.println("La partie est gagnee !! ");
                 indice = false;
+                AfficherFin();
             }
 
         }
+    }
+
+    public void AfficherFin() {
+        UneGrille.AfficherFin();
     }
 }

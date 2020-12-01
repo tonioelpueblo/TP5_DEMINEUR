@@ -11,105 +11,113 @@ package tp5_demineur_01;
  * @author antoi
  */
 public class Cellule {
+
     Boolean Bombe;
-    
+
     Boolean Visible;
     //Si la cellule est cachée Visible=false
     //Ce boolean permet de savoir si on peut poser un drapeau, a afficher les 
     //numeros... 
     int Contact;
     Drapeau DrapeauCell;
-    
-    public Cellule(){
+
+    public Cellule() {
         //Constructeur d'une cellule qui initialise par defaut pas de bombe
         //et zero contact et cellule cachee et pas de drapeau :
-        DrapeauCell=null;
-        Bombe=false;
-        Visible=false;
-        Contact=0;
+        DrapeauCell = null;
+        Bombe = false;
+        Visible = false;
+        Contact = 0;
     }
-    
-    public boolean AffecterDrapeau(Drapeau NouveauDrapeau){
-        if(PresenceDrapeau()==false){//si il n'y a pas de drapeau on peut l'
+
+    public boolean AffecterDrapeau(Drapeau NouveauDrapeau) {
+        if (PresenceDrapeau() == false) {//si il n'y a pas de drapeau on peut l'
             //affecter : 
-            DrapeauCell=NouveauDrapeau;
+            DrapeauCell = NouveauDrapeau;
             return true;
-        }else{//sinon je renvoie faux
+        } else {//sinon je renvoie faux
             return false;
         }
     }
-    public String LireCouleurDrapeau(){
-        if(PresenceDrapeau()==true){
+
+    public String LireCouleurDrapeau() {
+        if (PresenceDrapeau() == true) {
             return DrapeauCell.LireCouleur();//Si il y a un drapeau, renvoie
             //couleur
-        }
-        else{
+        } else {
             return "null";//si pas de drapeau 
         }
     }
-    public boolean PlacerDrapeau(String coul){
+
+    public boolean PlacerDrapeau(String coul) {
         //on initialise le drapeau en passant par le constructeur : 
-        if(Visible==true){
+        if (Visible == true) {
             return false;
-        }else{
-        if(DrapeauCell==null){
-            DrapeauCell=new Drapeau(coul);
-            return true;
-        }else return false;
+        } else {
+            if (DrapeauCell == null) {
+                DrapeauCell = new Drapeau(coul);
+                return true;
+            } else {
+                return false;
+            }
         }
     }
-    public void EnleverDrapeau(){
-        DrapeauCell=null;
+
+    public void EnleverDrapeau() {
+        DrapeauCell = null;
     }
-    public boolean PresenceDrapeau(){
-        if(DrapeauCell==null){//si je n'ai pas de drapeau je renvoie vrai
+
+    public boolean PresenceDrapeau() {
+        if (DrapeauCell == null) {//si je n'ai pas de drapeau je renvoie vrai
             return true;
-        }else{//sinon je renvoie faux
+        } else {//sinon je renvoie faux
             return false;
         }
     }
-    public boolean PlacerBombe(){//Pose une bombe  (//aleatoire)
-        if(PresenceBombe()==false){//Si pas de bombe on l'active
-            Bombe=true;
+
+    public boolean PlacerBombe() {//Pose une bombe  (//aleatoire)
+        if (PresenceBombe() == false) {//Si pas de bombe on l'active
+            Bombe = true;
             return true;//Si ca s'est bien passé on renvoie vrai
-            
-        }else{
+
+        } else {
             return false;//sion on renvoie false
         }
     }
-    public boolean PresenceBombe(){
-        if(Bombe==false){//Renvoie vrai si presence de bombe
+
+    public boolean PresenceBombe() {
+        if (Bombe == false) {//Renvoie vrai si presence de bombe
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-    public boolean RendreVisible(){
-        if(Visible==false){//si je suis caché
-            Visible=true;//je deviens visible
+
+    public boolean RendreVisible() {
+        if (Visible == false) {//si je suis caché
+            Visible = true;//je deviens visible
             return true;//tout s'est bien passé
-        }else{//sinon ca s'est mal passé, on renvoie false
+        } else {//sinon ca s'est mal passé, on renvoie false
             return false;
         }
     }
-    public void AffecterNombreContact(int NbreContact){
-        Contact=NbreContact;//Mon nombre de contact de la cellule change
+
+    public void AffecterNombreContact(int NbreContact) {
+        Contact = NbreContact;//Mon nombre de contact de la cellule change
     }
-    public String LireNombreContact(){
+
+    public String LireNombreContact() {
         //si la cellules est visible on renvoie le nombre de contact,
         //si elle est invisibles on renvoie le drapeau :
-        if(Visible==true){
+        if (Visible == true) {
             return String.valueOf(Contact);//renvoie le nombre de contact
-        }
-        else{
-            if(DrapeauCell!=null){
-            return DrapeauCell.LireCouleur();
-        }else{
-                return " "; 
+        } else {
+            if (DrapeauCell != null) {
+                return DrapeauCell.LireCouleur();
+            } else {
+                return " ";
             }
         }
-        
-        
-        
+
     }
 }

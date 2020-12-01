@@ -306,7 +306,7 @@ public class Grille {
         for (int i = 0; i < ligne; i++) {
             for (int j = 0; j < colonne; j++) {
                 String element = "";
-
+//Hop
                 LaLigne += "[" + Cellules[i][j].LireNombreContact() + "]";
             }
             System.out.println(LaLigne);
