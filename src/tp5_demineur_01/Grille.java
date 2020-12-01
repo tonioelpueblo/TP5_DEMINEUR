@@ -57,13 +57,16 @@ public class Grille {
     public String LireCouleurDrapeau(int i, int j) {
         return Cellules[i][j].LireCouleurDrapeau();
     }
-    public boolean PlacerDrapeau(int i,int j,String coul){
+
+    public boolean PlacerDrapeau(int i, int j, String coul) {
         //Place un drapeau dans la cellule :
         return Cellules[i][j].PlacerDrapeau(coul);
     }
-public void EnleverDrapeau(int i,int j){
-    Cellules[i][j].EnleverDrapeau();
-}
+
+    public void EnleverDrapeau(int i, int j) {
+        Cellules[i][j].EnleverDrapeau();
+    }
+
     public void NombreTotBombe() {
         switch (Niveau) {//en fonction du niveau j'ai un nombre de bombe :
             case 1:
@@ -124,124 +127,119 @@ public void EnleverDrapeau(int i,int j){
         }
         return true;
     }
-public void EtendreSansContact(int i,int j){
-    //Il nous faut une methode propre au demineur qui etend la zone ou il n'y a
-    //pas de contact, par exemple si l'utilisateur choisit une case ou il n'y a
-    //pas de contact la carte va rendrevisible toutes les cases sans contact 
-    //qui y sont directement liees et les cases avec contact qui forment la
-    //peripherie de cette zone ... 
-    
-    Cellules[i][j].Visible=true;
-    //Huit directions possibles : 
-    int a=i;
-    int b=j;
-    
-    //1
-    if(VerifPossible(a-1,b-1)==true){
-        if(Cellules[a-1][b-1].Visible==false){
-            if(Cellules[a-1][b-1].Contact==0){
-            EtendreSansContact(a-1,b-1);
-            }else{
-                Cellules[a-1][b-1].RendreVisible();
+
+    public void EtendreSansContact(int i, int j) {
+        //Il nous faut une methode propre au demineur qui etend la zone ou il n'y a
+        //pas de contact, par exemple si l'utilisateur choisit une case ou il n'y a
+        //pas de contact la carte va rendrevisible toutes les cases sans contact 
+        //qui y sont directement liees et les cases avec contact qui forment la
+        //peripherie de cette zone ... 
+
+        Cellules[i][j].Visible = true;
+        //Huit directions possibles : 
+        int a = i;
+        int b = j;
+
+        //1
+        if (VerifPossible(a - 1, b - 1) == true) {
+            if (Cellules[a - 1][b - 1].Visible == false) {
+                if (Cellules[a - 1][b - 1].Contact == 0) {
+                    EtendreSansContact(a - 1, b - 1);
+                } else {
+                    Cellules[a - 1][b - 1].RendreVisible();
+                }
             }
         }
-    }
-    
-    
-    //2
-    if(VerifPossible(a-1,b)==true){
-        if(Cellules[a-1][b].Visible==false){
-            if(Cellules[a-1][b].Contact==0){
-            EtendreSansContact(a-1,b);
-            }else{
-                Cellules[a-1][b].RendreVisible();
+
+        //2
+        if (VerifPossible(a - 1, b) == true) {
+            if (Cellules[a - 1][b].Visible == false) {
+                if (Cellules[a - 1][b].Contact == 0) {
+                    EtendreSansContact(a - 1, b);
+                } else {
+                    Cellules[a - 1][b].RendreVisible();
+                }
             }
         }
-    }
-    
-    
-    //3
-    if(VerifPossible(a-1,b+1)==true){
-        if(Cellules[a-1][b+1].Visible==false){
-            if(Cellules[a-1][b+1].Contact==0){
-        
-            EtendreSansContact(a-1,b+1);
-            }else{
-                Cellules[a-1][b+1].RendreVisible();
+
+        //3
+        if (VerifPossible(a - 1, b + 1) == true) {
+            if (Cellules[a - 1][b + 1].Visible == false) {
+                if (Cellules[a - 1][b + 1].Contact == 0) {
+
+                    EtendreSansContact(a - 1, b + 1);
+                } else {
+                    Cellules[a - 1][b + 1].RendreVisible();
+                }
             }
         }
-    }
-    
-    
-    
-    //4
-    if(VerifPossible(a,b-1)==true){
-        if(Cellules[a][b-1].Visible==false){
-            if(Cellules[a][b-1].Contact==0){
-            EtendreSansContact(a,b-1);
-            }else{
-                Cellules[a][b-1].RendreVisible();
-            }
-            
-        }
-    }
-    
-    
-    //5
-    if(VerifPossible(a,b+1)==true){
-        if(Cellules[a][b+1].Visible==false){
-            if(Cellules[a][b+1].Contact==0){
-            EtendreSansContact(a,b+1);
-            }else{
-                Cellules[a][b+1].RendreVisible();
+
+        //4
+        if (VerifPossible(a, b - 1) == true) {
+            if (Cellules[a][b - 1].Visible == false) {
+                if (Cellules[a][b - 1].Contact == 0) {
+                    EtendreSansContact(a, b - 1);
+                } else {
+                    Cellules[a][b - 1].RendreVisible();
+                }
+
             }
         }
-    }
-    
-    
-    //6
-    if(VerifPossible(a+1,b-1)==true){
-        if(Cellules[a+1][b-1].Visible==false){
-            if(Cellules[a+1][b-1].Contact==0){
-            EtendreSansContact(a+1,b-1);
-            }else{
-                Cellules[a+1][b-1].RendreVisible();
+
+        //5
+        if (VerifPossible(a, b + 1) == true) {
+            if (Cellules[a][b + 1].Visible == false) {
+                if (Cellules[a][b + 1].Contact == 0) {
+                    EtendreSansContact(a, b + 1);
+                } else {
+                    Cellules[a][b + 1].RendreVisible();
+                }
             }
         }
-    }
-    
-    
-    //7
-    if(VerifPossible(a+1,b)==true){
-        if(Cellules[a+1][b].Visible==false){
-            if(Cellules[a+1][b].Contact==0){
-            EtendreSansContact(a+1,b);
-            }else{
-                Cellules[a+1][b].RendreVisible();
+
+        //6
+        if (VerifPossible(a + 1, b - 1) == true) {
+            if (Cellules[a + 1][b - 1].Visible == false) {
+                if (Cellules[a + 1][b - 1].Contact == 0) {
+                    EtendreSansContact(a + 1, b - 1);
+                } else {
+                    Cellules[a + 1][b - 1].RendreVisible();
+                }
             }
         }
-    }
-    
-    
-    //8
-    if(VerifPossible(a+1,b+1)==true){
-        if(Cellules[a+1][b+1].Visible==false){
-            if(Cellules[a+1][b+1].Contact==0){
-            EtendreSansContact(a+1,b+1);
-            }else{
-                Cellules[a+1][b+1].RendreVisible();
+
+        //7
+        if (VerifPossible(a + 1, b) == true) {
+            if (Cellules[a + 1][b].Visible == false) {
+                if (Cellules[a + 1][b].Contact == 0) {
+                    EtendreSansContact(a + 1, b);
+                } else {
+                    Cellules[a + 1][b].RendreVisible();
+                }
             }
         }
+
+        //8
+        if (VerifPossible(a + 1, b + 1) == true) {
+            if (Cellules[a + 1][b + 1].Visible == false) {
+                if (Cellules[a + 1][b + 1].Contact == 0) {
+                    EtendreSansContact(a + 1, b + 1);
+                } else {
+                    Cellules[a + 1][b + 1].RendreVisible();
+                }
+            }
+        }
+
     }
-    
-}
-public boolean VerifPossible(int a, int b){
-    if((a<ligne)&&(a>=0)&&(b<colonne)&&(b>=0)){
-        return true;
-    }else{
-        return false;
+
+    public boolean VerifPossible(int a, int b) {
+        if ((a < ligne) && (a >= 0) && (b < colonne) && (b >= 0)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+
     public void IncrementerContact(int i, int j) {//ajoute un contact
         Cellules[i][j].Contact++;//La cellule visee a un contact en plus
     }
@@ -294,8 +292,21 @@ public boolean VerifPossible(int a, int b){
     public void AfficherGrille() {
         String LaLigne = "";
         for (int i = 0; i < ligne; i++) {
-        for (int j = 0; j < colonne; j++) {
-            
+            for (int j = 0; j < colonne; j++) {
+
+                LaLigne += "[" + Cellules[i][j].LireNombreContact() + "]";
+            }
+            System.out.println(LaLigne);
+            LaLigne = "";
+        }
+    }
+
+    public void AfficherFin() {
+        String LaLigne = "";
+        for (int i = 0; i < ligne; i++) {
+            for (int j = 0; j < colonne; j++) {
+                String element = "";
+
                 LaLigne += "[" + Cellules[i][j].LireNombreContact() + "]";
             }
             System.out.println(LaLigne);
